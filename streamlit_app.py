@@ -24,7 +24,32 @@ with st.echo():
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
 
-    driver = get_driver()
-    driver.get("http://example.com")
+    def login_linkedin(username, password):
+    # Setting up the Chrome driver
+    
 
-    st.code(driver.page_source)
+        try:
+            # Go to LinkedIn
+            driver.get('http://www.linkedin.com/')
+    
+            # Wait for the page to load
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'session_key')))
+    
+            # Find the username and password fields and enter the data
+            driver.find_element(By.ID, 'session_key').send_keys(username)
+            driver.find_element(By.ID, 'session_password').send_keys(password)
+    
+            # Find the submit button and click it
+            driver.find_element(By.CSS_SELECTOR, "[data-id='sign-in-form__submit-btn']").click()
+    
+            # Wait for the page to load after clicking the button
+            WebDriverWait(driver, 10).until(EC.title_contains("LinkedIn"))
+    
+        except Exception as e:
+            print(f"An error occurred: {e}")
+    
+        finally:
+            time.sleep(10)
+            print("it worked!")
+            # Always ensure the browser gets closed
+    login_linkedin("Maxbladt@outlook.com", "mama12!")
