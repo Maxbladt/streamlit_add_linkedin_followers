@@ -46,10 +46,10 @@ with st.echo():
             WebDriverWait(driver, 10).until(EC.title_contains("LinkedIn"))
     
         except Exception as e:
-            print(f"An error occurred: {e}")
+            st.write(f"An error occurred: {e}")
     
         finally:
             time.sleep(10)
-            print("it worked!")
+            st.write("it worked!")
             # Always ensure the browser gets closed
     login_linkedin("Maxbladt@outlook.com", "mama12!")
