@@ -1,5 +1,4 @@
 import streamlit as st
-import time
 """
 ## Web scraping on Streamlit Cloud with Selenium
 
@@ -37,7 +36,7 @@ with st.echo():
 
         try:
             # Go to LinkedIn
-            driver.get('http://www.linkedin.com/')
+            driver.get('https://www.linkedin.com/')
     
             # Wait for the page to load
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'session_key')))
@@ -56,7 +55,6 @@ with st.echo():
             st.write(f"An error occurred: {e}")
     
         finally:
-            time.sleep(10)
             st.write("it worked!")
             # Always ensure the browser gets closed
     login_linkedin("Maxbladt@outlook.com", "mama12!")
