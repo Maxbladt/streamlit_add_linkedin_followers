@@ -23,6 +23,7 @@ with st.echo():
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
+    driver = get_driver()
 
     def login_linkedin(username, password):
     # Setting up the Chrome driver
